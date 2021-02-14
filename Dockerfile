@@ -1,3 +1,5 @@
+##### Stage 1 #####
+
 ### Use golang:1.15 as base image for building the application
 FROM golang:1.15 as builder
 
@@ -26,10 +28,12 @@ ENV CGO_ENABLED=0
 ### 'scratch' and 'alpine' both are Linux distributions
 RUN GOOS=linux go build ./app.go
 
+##### Stage 2 #####
+
 ### Define the running image
 FROM scratch
 
-### Alternatively to 'FROM scratch', using alpine:
+### Alternatively to 'FROM scratch', use 'alpine':
 # FROM alpine:3.13.1
 
 ### Set working directory
